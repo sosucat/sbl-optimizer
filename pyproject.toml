@@ -1,6 +1,6 @@
 [project]
 name = "sbl-optimizer"
-version = "0.1.0"
+version = "0.1.1"
 description = "Thermal swell pattern optimizer"
 authors = [
   { name = "Sosuke Ichihashi", email = "pengu1n.i843@gmail.com" }
@@ -19,6 +19,10 @@ dependencies = [
 "Homepage" = "https://sites.gatech.edu/futurefeelings/2025/03/07/swell-by-light-tei-25/"
 "Paper" = "https://dl.acm.org/doi/10.1145/3689050.3704420"
 "Repository" = "https://github.com/sosucat/sbl-optimizer"
+
+[project.scripts]
+sbl-optimizer = "sbl_optimizer.main:main"
+
 
 [tool.setuptools]
 license-files = ["LICENSE"]

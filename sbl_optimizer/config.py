@@ -26,9 +26,6 @@ class Config:
     # Thermal diffusivity of the material in m^2/s
     alpha: float = 5e-7               # m²/s
 
-    # Target area to be heated in pixels squared
-    target_area: float = 120000.0     # px²
-
     # Density of the paper in kg/m² (assumes 0.1 mm thickness)
     density_paper: float = 0.08       # kg/m²
 
@@ -54,10 +51,16 @@ class Config:
     buffer: float = 10.0
 
     # Duration for which heating is applied, in seconds
-    heating_time: float = 5.0        # s
+    heating_time: float = 6.0        # s
 
     # Maximum number of iterations for an algorithm or loop
     max_iterations: int = 300
+
+    # Enabling logging
+    verbose: int = 1
+
+    # Number of cells the paper is divided into in thermal simulations
+    resolution: int = 120000         # px²
 
     @staticmethod
     def from_file(path: Path) -> "Config":
@@ -72,5 +75,7 @@ class Config:
             swell_temperature=data.get('swell_temperature', 145.0),
             light_power=data.get('light_power', 100.0),
             light_diameter=data.get('light_diameter', 0.06),
-            alpha=data.get('alpha', 1e-7)
+            alpha=data.get('alpha', 1e-7),
+            verbose=data.get('verbose', 1),
+            resolution=data.get('resolution', 120000)
         )

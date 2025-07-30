@@ -2,5 +2,7 @@
     "swell_temperature": 145.0,
     "light_power": 100.0,
     "light_diameter": 0.06,
-    "alpha": 5e-07
+    "alpha": 5e-07,
+    "verbose": 1,
+    "resolution": 120000
 }

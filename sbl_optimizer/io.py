@@ -33,7 +33,7 @@ def save_pattern(img_path: Path, H, max_heat):
     pattern = pattern.resize(img.size, resample=Image.Resampling.BILINEAR)
     
     # Create output file path
-    out = img_path.with_name(f"{img_path.stem}_opt.pdf")
+    out = Path.cwd() / f"{img_path.stem}_opt.pdf"
     
     # Save pattern with original DPI
     pattern.save(out, dpi=img.info.get('dpi', (72, 72)))
@@ -51,8 +51,9 @@ def save_errors(errors, path: Path = Path('errors.csv')):
     Returns:
         Path to the saved CSV file.
     """
-    np.savetxt(path, np.array(errors, dtype=int), delimiter=',', fmt='%d')
-    return path
+    full_path = Path.cwd() / path
+    np.savetxt(full_path, np.array(errors, dtype=int), delimiter=',', fmt='%d')
+    return full_path
 
 
 def save_plots(T, phys_w, phys_h, img_path: Path, dpi: int):
@@ -101,7 +102,7 @@ def save_plots(T, phys_w, phys_h, img_path: Path, dpi: int):
         plt.yticks([])
 
         # Save the plot image
-        out = img_path.with_name(f"{img_path.stem}{suf}")
+        out = Path.cwd() / f"{img_path.stem}{suf}"
         plt.savefig(out)
         plt.close()
         outs.append(out)

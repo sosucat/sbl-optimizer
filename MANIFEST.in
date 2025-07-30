@@ -1,0 +1,3 @@
+recursive-include sbl_optimizer/assets *.json
+recursive-include sbl_optimizer/assets *.jpg
+recursive-include sbl_optimizer/assets *.md

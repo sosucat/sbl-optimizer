@@ -16,7 +16,6 @@
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
-
 """
 Main entry point for running the heat optimization process.
 
@@ -43,21 +42,45 @@ def parse_args():
     Returns:
         argparse.Namespace containing input image path and config path.
     """
-    # Use importlib.resources to get path to config.json bundled in the package
+    # Default config path from package resources
     try:
-        with resources.as_file(resources.files("sbl_optimizer") / "config.json") as config_path:
+        with resources.as_file(resources.files("sbl_optimizer.assets") / "config.json") as config_path:
             default_cfg = str(config_path)
     except (FileNotFoundError, ModuleNotFoundError):
-        default_cfg = "config.json"  # Fallback
+        default_cfg = "assets/config.json"  # Fallback
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('image', help='Input image path')
+    parser.add_argument(
+        'image',
+        nargs='?',
+        default=None,
+        help='Input image path (defaults to bundled sample image)'
+    )
     parser.add_argument(
         '-c', '--config',
         default=str(default_cfg),
         help=f'Path to JSON config (default: {default_cfg})'
     )
     return parser.parse_args()
+
+
+def configure_main_logging(verbose: bool):
+    """
+    Configure root logger based on verbosity setting.
+
+    Returns:
+        argparse.Namespace containing input image path and config path.
+    """
+    # Setup logging
+    logger = logging.getLogger()  # Root logger
+    logger.setLevel(logging.INFO if verbose else logging.WARNING)
+
+    if logger.hasHandlers():
+        logger.handlers.clear()
+
+    handler = logging.StreamHandler()
+    handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s"))
+    logger.addHandler(handler)
 
 
 def main():
@@ -70,12 +93,29 @@ def main():
     """
     args = parse_args()
 
-    # Setup logging
-    logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s')
+    # Load config
+    cfg_path = Path(args.config)
+    if not cfg_path.is_absolute():
+        cfg_path = (Path.cwd() / cfg_path).resolve()
+    if not cfg_path.exists():
+        raise FileNotFoundError(f"Config file not found: {cfg_path}")
+    cfg = Config.from_file(cfg_path)
 
-    # Load config and image
-    cfg = Config.from_file(Path(args.config))
-    image_path = Path(args.image)
+    # Set logger
+    configure_main_logging(cfg.verbose)
+
+    # Resolve image path
+    if args.image:
+        image_path = Path(args.image)
+    else:
+        try:
+            with resources.as_file(resources.files("sbl_optimizer.assets") / "sample.jpg") as sample_img_path:
+                image_path = sample_img_path
+                logging.info(f"No image provided. Using default: {image_path}")
+        except (FileNotFoundError, ModuleNotFoundError):
+            raise FileNotFoundError("No image provided and default sample image not found in package.")
+
+    # Load image
     mask, H_init, max_heat = image_to_heat_pattern(image_path, cfg)
 
     # Get physical dimensions
@@ -91,11 +131,10 @@ def main():
     plots = save_plots(T_best, phys_w, phys_h, image_path, dpi=Image.open(image_path).info.get('dpi', (72, 72))[0])
 
     # Log output file paths
-    logging.info("Saved pattern: %s", out_pdf)
-    # Comment out the line below to save the tracked error scores. You need to comment out the tracking line above.
+    logging.info("Saved: %s", out_pdf)
     # logging.info("Saved errors: %s", err_csv)
     for p in plots:
-        logging.info("Saved plot: %s", p)
+        logging.info("Saved: %s", p)
 
 
 if __name__ == '__main__':

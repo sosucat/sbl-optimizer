@@ -1,33 +1,42 @@
 [project]
 name = "sbl-optimizer"
-version = "0.1.1"
-description = "Thermal swell pattern optimizer"
-authors = [
-  { name = "Sosuke Ichihashi", email = "pengu1n.i843@gmail.com" }
-]
-requires-python = ">=3.9,<3.12"
-readme = "README.md"
-license = "MIT"
-
+version = "0.1.5"
 dependencies = [
   "numpy >=1.24, <2.3",
   "pillow >=9.5, <12.0",
   "matplotlib >=3.7, <3.11"
 ]
+requires-python = ">=3.9,<3.12"
+authors = [
+  { name = "Sosuke Ichihashi", email = "pengu1n.i843@gmail.com" }
+]
+maintainers = [
+  { name = "Sosuke Ichihashi", email = "pengu1n.i843@gmail.com" }
+]
+description = "Thermal swell pattern optimizer for Swell by Light"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+keywords = ["hci", "fabrication", "diy", "swell by light", "heat transfer"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python"
+]
 
 [project.urls]
-"Homepage" = "https://sites.gatech.edu/futurefeelings/2025/03/07/swell-by-light-tei-25/"
+"HomePage" = "https://sites.gatech.edu/futurefeelings/2025/03/07/swell-by-light-tei-25/"
 "Paper" = "https://dl.acm.org/doi/10.1145/3689050.3704420"
 "Repository" = "https://github.com/sosucat/sbl-optimizer"
+"Author" = "https://sosuke-ichihashi.com/"
 
 [project.scripts]
 sbl-optimizer = "sbl_optimizer.main:main"
 
-
 [tool.setuptools]
-license-files = ["LICENSE"]
-[tool.setuptools.packages.find]
-where = ["sbl_optimizer"]
+include-package-data = true
+# # license-files = ["LICENSE"]
+# [tool.setuptools.packages.find]
+# where = ["sbl_optimizer"]
 
 [build-system]
 requires = ["setuptools >=61", "wheel"]

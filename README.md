@@ -1,10 +1,21 @@
 # sbl-optimizer
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![PyPI version](https://badge.fury.io/py/sbl-optimizer.svg)](https://badge.fury.io/py/sbl-optimizer)\
- [Homepage](https://sites.gatech.edu/futurefeelings/2025/03/07/swell-by-light-tei-25/) • [Paper](https://doi.org/10.1145/3689050.3704420) • [PyPI](https://pypi.org/project/sbl-optimizer/) • [GitHub](https://github.com/sosucat/sbl-optimizer)
+[![License](https://img.shields.io/badge/license-MIT-750014)](https://doi.org/10.1145/3689050.3704420)
+[![PyPI version](https://badge.fury.io/py/sbl-optimizer.svg)](https://badge.fury.io/py/sbl-optimizer)
+[![GitHub](https://img.shields.io/badge/GitHub_repo-black?logo=github)](https://github.com/sosucat/sbl-optimizer)
+[![Google colab](https://img.shields.io/badge/Google_Colab-black?logo=googlecolab)](https://github.com/sosucat/sbl-optimizer)\
+[![Homepage](https://img.shields.io/badge/🔗_Homepage-black)](https://sites.gatech.edu/futurefeelings/2025/03/07/swell-by-light-tei-25/)
+[![Author](https://img.shields.io/badge/Author-black?logo=googlescholar&logoColor=white)](https://sosuke-ichihashi.com/)
+[![Research paper](https://img.shields.io/badge/Research_Paper-black?logo=acm)](https://doi.org/10.1145/3689050.3704420)
+[![Watch fabrication demo on YouTube](https://img.shields.io/badge/Fabrication-750014?logo=youtube)](https://youtu.be/LomVS_jHxl0?feature=shared)
 
-Thermal swell pattern optimizer for “Swell by Light”: an approachable technique for freeform raised textures on paper and other materials.  
-Generates improved print patterns that considers heat diffusion, resulting in swell patterns similar to those of the original image.
+![Swell by Light](https://sites.gatech.edu/futurefeelings/files/2025/07/fab_process_short.gif)
+
+Print pattern optimizer for ``Swell by Light (SbL)``.\
+SbL is an approachable technique for freeform raised textures on paper and other materials. SbL-Optimizer improves print patterns considering heat diffusion, making the resulting swell patterns better match the original images.
+
+![A printed pattern's shades change as the optimization progresses, and the resulting temperature distribution gets closer to the intended pattern.](https://sites.gatech.edu/futurefeelings/files/2025/03/opt_step.gif)
+Optimization of the printed pattern results in a uniform temperature pattern closely matching the original pattern.
 
 ---
 
@@ -14,10 +25,8 @@ Generates improved print patterns that considers heat diffusion, resulting in sw
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Installation](#installation)
-    - [Using a Virtual Environment (Optional)](#using-a-virtual-environment-optional)
-    - [Install **sbl-optimizer** in two easy ways:](#install-sbl-optimizer-in-two-easy-ways)
-      - [1. From PyPI](#1-from-pypi)
-      - [2. From Source](#2-from-source)
+    - [1. (Recommended) From PyPI](#1-recommended-from-pypi)
+    - [2. From Source](#2-from-source)
     - [Requirements](#requirements)
   - [Quick Start](#quick-start)
   - [Configuration](#configuration)
@@ -39,44 +48,20 @@ Generates improved print patterns that considers heat diffusion, resulting in sw
 - **Simple CLI**  
   One‐command execution, with JSON‐based configuration and image input.
 - **Built on Python**  
-  Uses NumPy, Pillow, and Matplotlib for fast, portable computations and visualizations.
+  Uses NumPy, Pillow, and Matplotlib for computations and visualizations.
 
 ---
 
 ## Installation
+Install `sbl-optimizer` in two easy ways:
 
-We recommend using a virtual environment to manage dependencies cleanly and avoid conflicts:
-
-### Using a Virtual Environment (Optional)
-
-```bash
-# Create a virtual environment
-python -m venv .venv
-
-# Activate it
-# On macOS/Linux:
-source .venv/bin/activate
-
-# On Windows:
-.venv\Scripts\activate
-
-# Then install the package
-pip install sbl-optimizer
-```
-
-### Install **sbl-optimizer** in two easy ways:
-
-
-#### 1. From PyPI
-
-The simplest method—just pip:
+### 1. (Recommended) From PyPI
 
 ```bash
 pip install sbl-optimizer
 ```
 
-#### 2. From Source
-
+### 2. From Source
 Clone the repository and install locally:
 
 ```bash
@@ -95,7 +80,7 @@ Ensure you have Python and dependencies:
 | Pillow     | 9.5 - 11.x |
 | Matplotlib | 3.7 - 3.10 |
 
-You can also install dependencies manually:
+You can also install dependencies manually if they were not installed automatically:
 
 ```bash
 pip install numpy pillow matplotlib
@@ -104,30 +89,22 @@ pip install numpy pillow matplotlib
 
 ## Quick Start
 
-1. **If you are NOT in the project's root directory**,\
-   change the directory to the project's root directory:
+1. Run the optimizer with a sample image:
 
    ```bash
-   cd sbl_optimizer
-   ```
-   Note: make sure you are at ```sbl_optimizer``` not ```sbl_optimizer/sbl_optimizer```
-
-2. Run the optimizer to generate an optimized pattern that accounts for heat diffusion:
-
-   ```bash
-   python -m sbl_optimizer.main sample.jpg
+   sbl-optimizer
    ```
 
-3. Locate the generated optimized pattern `sample_opt.pdf` in the project's root directory.
+2. Locate the generated optimized pattern `sample_opt.pdf` in the current directory.
 
-4. Check the simulated heat distribution `sample_temperature.png` and swell pattern `sample_swell.png`.
+3. Check the simulated temperature distribution `sample_temperature.png` and swell pattern `sample_swell.png`.
 
-5. Print the `sample_opt.pdf` on paper, apply paste, and expose to a strong LED spotlight. Darker printed regions absorb more heat and swell.
+4. Print the `sample_opt.pdf` on paper, apply paste, and expose to a strong LED spotlight. Darker printed regions absorb more heat and swell.
 
-6. Try optimizing your own pattern.
+5. Try optimizing your own pattern.
    
    ```bash
-   python -m sbl_optimizer.main path/to/your_image
+   sbl-optimizer path/to/your_image.png
    ```
 
 ---
@@ -142,21 +119,25 @@ Some parameters can be customized via a JSON file (default: `config.json` shippe
   "swell_temperature": 145.0,
   "light_power": 100.0,
   "light_diameter": 0.06,
-  "alpha": 5e-07
+  "alpha": 5e-07,
+  "verbose": 1,
+  "resolution": 120000
 }
 ```
 
 | Key                 | Type   | Description                                                   |
 |---------------------|--------|---------------------------------------------------------------|
-| `swell_temperature` | float  | Target swelling temperature (°C).                             |
-| `light_power`       | float  | Light source power (W).                                       |
-| `light_diameter`    | float  | Diameter of the light circle on paper (m).                    |
+| `swell_temperature` | float  | Target swelling temperature (°C). Adjust this based on the swell temperature of the paste you have.                            |
+| `light_power`       | float  | Light source power (W). Adjust this according to your light's power.                                      |
+| `light_diameter`    | float  | Diameter of the light circle on paper (m). Adjust based on the light circle diameter during heating.                   |
 | `alpha`             | float  | Thermal diffusivity of paper (m²/s).                          |
+| `verbose`           | int    | Bool enabling logging. 0: turned off; 1: turned on.           |
+| `resolution`        | int    | Number of cells paper is divided into in thermal simulations. Reduce this for faster optimization. Increase for a finer result.|
 
 To override defaults:
 
 ```bash
-python -m sbl_optimizer.main <IMAGE> --config path/to/your_config.json
+sbl-optimizer --config path/to/your_config.json <IMAGE>
 ```
 
 ---
@@ -166,13 +147,13 @@ python -m sbl_optimizer.main <IMAGE> --config path/to/your_config.json
 ### Usage
 
 ```bash
-python -m sbl_optimizer.main [OPTIONS] <IMAGE>
+sbl-optimizer [OPTIONS] <IMAGE>
 ```
 
 ### Arguments
 
   `<IMAGE>`\
-  Path to the input image (JPG, PNG, etc.)
+  Path to the input image (JPG, PNG)
 
 ### Options
 
@@ -185,19 +166,31 @@ python -m sbl_optimizer.main [OPTIONS] <IMAGE>
 
 ## Examples
 
-1. Use default settings on `sample.jpg` in the project's root directory.
+1. Use default settings on a sample image.
     ```bash
-    python -m sbl_optimizer.main sample.jpg
+    sbl-optimizer
     ```
 
-2. Use custom settings
+2. Use default settings on your image.
     ```bash
-    python -m sbl_optimizer.main sample.jpg --config my_config.json
+    sbl-optimizer flower.jpg
     ```
 
-3. Save only error logs (disable plotting)\
-    Edit `main.py`:
-    - comment out `save_plots`, uncomment `save_errors`
+3. Use custom settings
+    ```bash
+    sbl-optimizer --config my_config.json
+    ```
+    , where ``my_config.json`` looks like this:
+    ```json
+    {
+    "swell_temperature": 135.0,
+    "light_power": 120.0,
+    "light_diameter": 0.07,
+    "alpha": 5e-07,
+    "verbose": 0,
+    "resolution": 50000
+    }
+    ```
 
 Output files (in same folder as input image `sample.jpg`):
 
@@ -212,6 +205,10 @@ Output files (in same folder as input image `sample.jpg`):
 ## Citation
 
 If you use **sbl-optimizer** in your research or projects, please cite:
+
+Sosuke Ichihashi, Noura Howell, and HyunJoo Oh. 2025.\
+Swell by Light: An Approachable Technique for Freeform Raised Textures. \
+In Proceedings of the Nineteenth International Conference on Tangible, Embedded, and Embodied Interaction (TEI '25). Association for Computing Machinery, New York, NY, USA, Article 45, 1–16. https://doi.org/10.1145/3689050.3704420
 
 ```bibtex
 @inproceedings{10.1145/3689050.3704420,

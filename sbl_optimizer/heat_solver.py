@@ -6,10 +6,28 @@ Date: 2025-07-29
 """
 
 import math
+import logging
 import numpy as np
 from PIL import Image
 from .utils import compute_dims
 from .config import Config
+
+
+logger = logging.getLogger(__name__)
+
+def configure_logger(verbose: bool):
+    """
+    Configure logger based on verbosity setting.
+    """
+    if verbose:
+        logger.setLevel(logging.INFO)
+        logger.propagate = False  # Prevent messages from going to the root logger
+        if not logger.handlers:
+            ch = logging.StreamHandler()
+            ch.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(message)s"))
+            logger.addHandler(ch)
+    else:
+        logger.setLevel(logging.WARNING)
 
 
 def image_to_heat_pattern(image_path, config: Config):
@@ -28,8 +46,8 @@ def image_to_heat_pattern(image_path, config: Config):
     """
     img = Image.open(image_path)
 
-    # Rescale image to match target area
-    scale = math.sqrt(config.target_area / (img.width * img.height))
+    # Rescale image to match the resolution of thermal simulations
+    scale = math.sqrt(config.resolution / (img.width * img.height))
     img_rs = img.resize(
         (int(img.width * scale), int(img.height * scale)),
         resample=Image.Resampling.LANCZOS
@@ -224,6 +242,8 @@ def optimize(mask, H_init, max_heat, img_w, img_h, phys_w, phys_h, config: Confi
             - H: Final heat input field.
             - errors: List of error counts over iterations.
     """
+    configure_logger(config.verbose == 1)
+
     dx = phys_w / (mask.shape[0] - 1)
     dy = phys_h / (mask.shape[1] - 1)
     dt = 0.49 * dx**2 * dy**2 / ((dx**2 + dy**2) * config.alpha)
@@ -236,8 +256,6 @@ def optimize(mask, H_init, max_heat, img_w, img_h, phys_w, phys_h, config: Confi
     Q_conv = H_init.copy()
 
     for it in range(config.max_iterations):
-        print(it + 1)
-
         # Update heat pattern after first iteration
         if it > 0:
             update_heat_pattern(
@@ -262,14 +280,17 @@ def optimize(mask, H_init, max_heat, img_w, img_h, phys_w, phys_h, config: Confi
 
         # Track and store error
         err = count_outsiders(T, mask, config)
-        print(err)
         errors.append(err)
+
+        # Log the iteration number and the error count
+        logger.info(f"Iteration {it + 1}: Outlier = {int(err * 100 / config.resolution)}%")
 
         # Store best temperature result
         if err < min(errors[:-1] or [err]):
             T_best = T.copy()
 
         if is_converged(errors):
+            logger.info(f"Converged at iteration {it + 1}.")
             break
 
     return T_best, H, errors

@@ -15,6 +15,7 @@ Print pattern optimizer for ``Swell by Light (SbL)``.\
 SbL is an approachable technique for freeform raised textures on paper and other materials. SbL-Optimizer improves print patterns considering heat diffusion, making the resulting swell patterns better match the original images.
 
 ![A printed pattern's shades change as the optimization progresses, and the resulting temperature distribution gets closer to the intended pattern.](https://sites.gatech.edu/futurefeelings/files/2025/03/opt_step.gif)
+
 Optimization of the printed pattern results in a uniform temperature pattern closely matching the original pattern.
 
 ---

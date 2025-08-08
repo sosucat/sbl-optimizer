@@ -1,5 +1,5 @@
 <!-- Language Selector -->
-[🇺🇸 English](#sbl-optimizer) | [🇯🇵 日本語](#sbl-optimizer-日本語)
+[🔤 English](#sbl-optimizer) | [🇯🇵 日本語](#sbl-optimizer-日本語)
 
 # sbl-optimizer
 

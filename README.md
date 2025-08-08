@@ -3,7 +3,7 @@
 
 # sbl-optimizer
 
-[![License](https://img.shields.io/badge/license-MIT-750014)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-750014)](https://github.com/sosucat/sbl-optimizer/blob/main/LICENSE)
 [![PyPI version](https://badge.fury.io/py/sbl-optimizer.svg)](https://badge.fury.io/py/sbl-optimizer)
 [![GitHub](https://img.shields.io/badge/GitHub_repo-black?logo=github)](https://github.com/sosucat/sbl-optimizer)
 [![Simple Colab](https://img.shields.io/badge/Easy_Colab-black?logo=googlecolab)](https://colab.research.google.com/drive/1Kpvq15wZrzsnQI28_JfkDSqCwT1ouyxj?usp=sharing)
@@ -42,8 +42,23 @@ Optimization of the printed pattern results in a uniform temperature pattern clo
   - [Configuration](#configuration)
   - [Examples](#examples)
   - [Citation](#citation)
-  - [Contributing](#contributing)
   - [License](#license)
+- [sbl-optimizer 日本語](#sbl-optimizer-日本語)
+  - [目次](#目次)
+  - [特徴](#特徴)
+  - [インストール](#インストール)
+    - [1. （推奨）PyPI から](#1-推奨pypi-から)
+    - [2. ソースから](#2-ソースから)
+    - [必要条件](#必要条件)
+  - [クイックスタート](#クイックスタート)
+  - [コマンドラインインターフェース](#コマンドラインインターフェース)
+    - [使用方法](#使用方法)
+    - [引数](#引数)
+    - [オプション](#オプション)
+  - [設定](#設定)
+  - [使用例](#使用例)
+  - [引用](#引用)
+  - [ライセンス](#ライセンス)
 
 ---
 
@@ -249,7 +264,7 @@ This project is licensed under the [MIT License](LICENSE).\
 
 # sbl-optimizer 日本語
 
-[![ライセンス](https://img.shields.io/badge/license-MIT-750014)](LICENSE)
+[![ライセンス](https://img.shields.io/badge/license-MIT-750014)](https://github.com/sosucat/sbl-optimizer/blob/main/LICENSE)
 [![PyPI バージョン](https://badge.fury.io/py/sbl-optimizer.svg)](https://badge.fury.io/py/sbl-optimizer)
 [![GitHub](https://img.shields.io/badge/GitHub_repo-black?logo=github)](https://github.com/sosucat/sbl-optimizer?tab=readme-ov-file#sbl-optimizer-%E6%97%A5%E6%9C%AC%E8%AA%9E)
 [![簡易版 Colab](https://img.shields.io/badge/簡易版Colab-black?logo=googlecolab)](https://colab.research.google.com/drive/15zYmaNvh88jztUcqpzwLXtT4YMRk2i1G?usp=sharing)
@@ -273,6 +288,22 @@ This project is licensed under the [MIT License](LICENSE).\
 
 ## 目次
 
+- [sbl-optimizer](#sbl-optimizer)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Installation](#installation)
+    - [1. (Recommended) From PyPI](#1-recommended-from-pypi)
+    - [2. (Alternative) From Source](#2-alternative-from-source)
+    - [Requirements](#requirements)
+  - [Quick Start](#quick-start)
+  - [Command Line Interface](#command-line-interface)
+    - [Usage](#usage)
+    - [Arguments](#arguments)
+    - [Options](#options)
+  - [Configuration](#configuration)
+  - [Examples](#examples)
+  - [Citation](#citation)
+  - [License](#license)
 - [sbl-optimizer 日本語](#sbl-optimizer-日本語)
   - [目次](#目次)
   - [特徴](#特徴)
@@ -288,7 +319,6 @@ This project is licensed under the [MIT License](LICENSE).\
   - [設定](#設定)
   - [使用例](#使用例)
   - [引用](#引用)
-  - [貢献方法](#貢献方法)
   - [ライセンス](#ライセンス)
 
 ---

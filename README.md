@@ -3,8 +3,10 @@
 [![License](https://img.shields.io/badge/license-MIT-750014)](https://doi.org/10.1145/3689050.3704420)
 [![PyPI version](https://badge.fury.io/py/sbl-optimizer.svg)](https://badge.fury.io/py/sbl-optimizer)
 [![GitHub](https://img.shields.io/badge/GitHub_repo-black?logo=github)](https://github.com/sosucat/sbl-optimizer)
-[![Google colab](https://img.shields.io/badge/Google_Colab-black?logo=googlecolab)](https://github.com/sosucat/sbl-optimizer)\
+[![Simple Colab](https://img.shields.io/badge/Easy_Colab-black?logo=googlecolab)](https://colab.research.google.com/drive/1Kpvq15wZrzsnQI28_JfkDSqCwT1ouyxj?usp=sharing)
+[![Advanced Colab](https://img.shields.io/badge/Advanced_Colab-black?logo=googlecolab)](https://colab.research.google.com/drive/1KX5W0MG34zS_qX7RqeMLizrkhlWp8ojh?usp=sharing)\
 [![Homepage](https://img.shields.io/badge/🔗_Homepage-black)](https://sites.gatech.edu/futurefeelings/2025/03/07/swell-by-light-tei-25/)
+[![Fabrication Tutorial](https://img.shields.io/badge/🔗_Fabrication_tutorial-black)](https://sites.gatech.edu/futurefeelings/2025/08/06/make-puffy-patterns-with-light-advanced/)
 [![Author](https://img.shields.io/badge/Author-black?logo=googlescholar&logoColor=white)](https://sosuke-ichihashi.com/)
 [![Research paper](https://img.shields.io/badge/Research_Paper-black?logo=acm)](https://doi.org/10.1145/3689050.3704420)
 [![Watch fabrication demo on YouTube](https://img.shields.io/badge/Fabrication-750014?logo=youtube)](https://youtu.be/LomVS_jHxl0?feature=shared)

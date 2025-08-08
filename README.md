@@ -62,7 +62,7 @@ Install `sbl-optimizer` in two easy ways:
 pip install sbl-optimizer
 ```
 
-### 2. From Source
+### 2. (Alternative) From Source
 Clone the repository and install locally:
 
 ```bash
@@ -110,6 +110,28 @@ pip install numpy pillow matplotlib
 
 ---
 
+## Command Line Interface
+
+### Usage
+
+```bash
+sbl-optimizer [OPTIONS] <IMAGE>
+```
+
+### Arguments
+
+  `<IMAGE>`\
+  Path to the input image (JPG, PNG)
+
+### Options
+
+| Option                  | Description                |
+| ----------------------- | -------------------------- |
+| `-c`, `--config <FILE>` | Path to JSON config file   |
+| `-h`, `--help`          | Show help message and exit |
+
+---
+
 ## Configuration
 
 Some parameters can be customized via a JSON file (default: `config.json` shipped with the package).
@@ -140,28 +162,6 @@ To override defaults:
 ```bash
 sbl-optimizer --config path/to/your_config.json <IMAGE>
 ```
-
----
-
-## Command Line Interface
-
-### Usage
-
-```bash
-sbl-optimizer [OPTIONS] <IMAGE>
-```
-
-### Arguments
-
-  `<IMAGE>`\
-  Path to the input image (JPG, PNG)
-
-### Options
-
-| Option                  | Description                |
-| ----------------------- | -------------------------- |
-| `-c`, `--config <FILE>` | Path to JSON config file   |
-| `-h`, `--help`          | Show help message and exit |
 
 ---
 

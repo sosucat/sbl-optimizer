@@ -14,8 +14,8 @@
 [![Research paper](https://img.shields.io/badge/Research_Paper-black?logo=acm)](https://doi.org/10.1145/3689050.3704420)
 [![Watch fabrication demo on YouTube](https://img.shields.io/badge/Fabrication-750014?logo=youtube)](https://youtu.be/LomVS_jHxl0?feature=shared)
 
-Print pattern optimizer for ``Swell by Light (SbL)``.\
-[SbL](https://sites.gatech.edu/futurefeelings/2025/03/07/swell-by-light-tei-25/) is an approachable technique for freeform raised textures on paper and other materials. SbL-Optimizer improves print patterns considering heat diffusion, making the resulting swell patterns better match the original images.
+Print pattern optimizer for ``Swell by Light``.\
+[Swell by Light (SbL)](https://sites.gatech.edu/futurefeelings/2025/03/07/swell-by-light-tei-25/) is an approachable technique for freeform raised textures on paper and other materials. SbL-Optimizer improves print patterns considering heat diffusion, making the resulting swell patterns better match the original images.
 
 ![Swell by Light](https://sites.gatech.edu/futurefeelings/files/2025/08/fab_process_short_opt.gif)
 
